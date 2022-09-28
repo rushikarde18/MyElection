@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Election</string>
+    <string name="website_url">www.racayita.com</string>
+    <string name="main_page">मुख्यपृष्ठ</string>
+    <string name="news_and_information">बातमी आणि माहिती</string>
+    <string name="news">बातम्या </string>
+    <string name="biography">जीवनचरित्र</string>
+    <string name="work_and_vision">कार्य आणि दृष्टी</string>
+    <string name="contact_us">आमच्याशी संपर्क साधा</string>
+    <string name="video">व्हिडिओ</string>
 </resources>
