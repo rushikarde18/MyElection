@@ -13,7 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding =  ActivityMainBinding.inflate(layoutInflater)
         binding.btNewsAndInfo.setOnClickListener(View.OnClickListener { v ->
-            startActivity(Intent(this@MainActivity, NewsAndInformationActivity::class.java))
+//            startActivity(Intent(this@MainActivity, NewsAndInformationActivity::class.java))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eci.gov.in"))
+            startActivity(browserIntent)
         })
 
         binding.btBiography.setOnClickListener(View.OnClickListener { v ->
@@ -21,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.btWorkAndVision.setOnClickListener(View.OnClickListener { v ->
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
-            startActivity(browserIntent)
+            startActivity(Intent(this@MainActivity, NewsAndInformationActivity::class.java))
+
         })
 
         binding.btVideo.setOnClickListener(View.OnClickListener { v ->

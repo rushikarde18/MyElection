@@ -3,6 +3,7 @@ package com.racayita.myelection.ui.adapters
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +15,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.racayita.myelection.R
 import com.racayita.myelection.model.VideoItem
+import org.apache.commons.io.IOUtils
+import org.json.JSONObject
 import java.net.MalformedURLException
 import java.net.URL
-import kotlin.jvm.Throws
+
 
 /**
  * Created by Rushikesh Karde on 31/10/22.
@@ -42,13 +45,13 @@ val itemList : ArrayList<VideoItem>): RecyclerView.Adapter<VideoAdapter.ViewHold
             var imageUrl = ""
             try {
                 videoId = extractYoutubeId(itemList.get(position).videoUrl).toString()
-                imageUrl = "http://img.youtube.com/vi/$videoId/0.jpg"
+                imageUrl = "https://img.youtube.com/vi/$videoId/0.jpg"
                 println("Thumbnail Url = $imageUrl")
 
             } catch (e: MalformedURLException) {
                 e.printStackTrace()
             }
-            holder.textView.text = videoId.toString()
+            holder.textView.text = getTitleQuietly(itemList.get(position).videoUrl, position, videoId)
             Glide.with(context)
                 .load(imageUrl.toString())
                 .placeholder(R.mipmap.ic_launcher)
@@ -90,4 +93,24 @@ val itemList : ArrayList<VideoItem>): RecyclerView.Adapter<VideoAdapter.ViewHold
         }
         return id
     }
+
+    fun getTitleQuietly(youtubeUrl: String?, position: Int, videoId: String): String? {
+        try {
+            if (youtubeUrl != null) {
+                val embededURL = URL(
+                    "https://www.youtube.com/oembed?url=youtube.com/watch?v=" +
+                            videoId + "&format=json"
+                )
+                println("embededURL= $embededURL")
+                val videoTitle = JSONObject(IOUtils.toString(embededURL, "title"))
+                println("Video Title = $videoTitle")
+                return videoTitle.toString()
+            }
+        } catch (e: Exception) {
+            Log.e("ERROR ", e.localizedMessage)
+        }
+        return "video $position"
+    }
+
+
 }
