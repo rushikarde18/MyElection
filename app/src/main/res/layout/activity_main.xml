@@ -89,14 +89,6 @@
                     />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btNewsAndInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/news_and_information"
-                    android:background="@drawable/my_button_style"
-                    android:layout_margin="@dimen/button_padding"/>
-
-                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btBiography"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,6 +101,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/work_and_vision"
+                    android:background="@drawable/my_button_style"
+                    android:layout_margin="@dimen/button_padding"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btNewsAndInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/news_and_information"
                     android:background="@drawable/my_button_style"
                     android:layout_margin="@dimen/button_padding"/>
 
